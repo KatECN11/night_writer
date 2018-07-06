@@ -7,4 +7,6 @@ first_file = ARGV.first
 puts "Created 'braille.txt' containing 256 characters."
  "hey, i'm adding stuff and being helpful."
 
+
+
  "I'm making A LOT of changes now".
