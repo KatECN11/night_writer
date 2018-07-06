@@ -55,6 +55,8 @@ Abilities Expectations (Technical strengths and areas for desired improvement):
 Workload Expectations (What features do we each want to work on?):
 
 Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests):
+    git commit every 20 minutes.  Push working branch onto github at every end of working day to keep updated.
+    Each person will submit the PR for their branch.  Other person will review and merge to master.  We will notify the other team member every time this is done. 
 
 
 Expectations for giving and receiving feedback:
