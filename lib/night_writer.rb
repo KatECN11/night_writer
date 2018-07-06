@@ -5,3 +5,5 @@ first_file = ARGV.first
 #
 # out_file.write()
 puts "Created 'braille.txt' containing 256 characters."
+kjadslfkjsld;kfjsldkjf
+sdjfsdlkjf
