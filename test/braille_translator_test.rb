@@ -44,11 +44,13 @@ class BrailleTranslatorTest < Minitest::Test
   def test_breaks_long_string_into_groups_40
     bm = BrailleTranslator.new
     message = "aaaaaaaaaabbbbbbbbbaaaaaaaaaabbbbbbbbbbbccccccccccddddddddddccccccccccddddddddddee"
-    
+
     actual = bm.break_to_40(message)
     expected = ["aaaaaaaaaabbbbbbbbbaaaaaaaaaabbbbbbbbbbb", "ccccccccccddddddddddccccccccccdddddddddd", "ee"]
 
     assert_equal expected, actual
   end
+
+  
 
 end
