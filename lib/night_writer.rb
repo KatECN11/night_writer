@@ -9,12 +9,18 @@ handle.close
 
 
 bm = BrailleTranslator.new
-braille_message = bm.converter(message)
-p braille_message
+braille_message = bm.break_to_40(message)
 
-writer = File.open(ARGV[1], 'w')
+writer = File.open(ARGV[1], 'w') do |f|
+  f.puts braille_message
+end
 
-writer.write(braille_message)
+characters = 0
+braille_message.each do |element|
+  characters += element.length
+end
 
-writer.close
-puts "Created #{ARGV[1]} containing #{braille_message.length} characters."
+
+
+
+puts "Created #{ARGV[1]} containing #{characters} characters."
