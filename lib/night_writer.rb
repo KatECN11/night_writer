@@ -1,8 +1,16 @@
-first_file = ARGV.first
-output_file = ARGV.last
+handle = File.open(ARGV[0], 'r')
 
-# first_file.open
-# data = first_file.read
+message = handle.read
 
+puts "Created #{ARGV[1]} containing 256 characters."
 
-puts "Created #{output_file} containing 256 characters."
+handle.close
+
+# Braille conversion algorithm
+# braille_message = this is the braille
+
+writer = File.open(ARGV[1], 'w')
+
+writer.write("braille_message")
+
+writer.close
