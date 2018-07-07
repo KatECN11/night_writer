@@ -1,4 +1,4 @@
-require './braille_translator'
+require './lib/braille_translator'
 
 handle = File.open(ARGV[0], 'r')
 
@@ -9,7 +9,7 @@ handle.close
 
 
 
-bm = BrailleTranslater.new
+bm = BrailleTranslator.new
 braille_message = bm.converter(message)
 p braille_message
 
