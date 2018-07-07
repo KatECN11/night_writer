@@ -20,6 +20,7 @@ class BrailleTranslatorTest < Minitest::Test
   end
 
   def test_converts_multiple_characters
+    skip
     bm = BrailleTranslator.new
 
     actual = bm.converter("ab")

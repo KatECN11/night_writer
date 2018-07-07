@@ -32,14 +32,17 @@ class BrailleTranslator
 
             def converter(message)
               text = message.chars
-              text_length = text.length 
-              converted_message = text.map do |letter|
-              "#{@alpha_to_braille[letter][0]}\n#{@alpha_to_braille[letter][1]}\n#{@alpha_to_braille[letter][2]}"
+              text_length = text.length
+              line_1_loop = text.map do |letter|
+                "#{@alpha_to_braille[letter][0]}"
               end
-              converted_message.join("\n")
+              line_2_loop = text.map do |letter|
+                "#{@alpha_to_braille[letter][1]}"
+              end
+              line_3_loop = text.map do |letter|
+                "#{@alpha_to_braille[letter][2]}"
+              end
+            line_1_loop.join + "\n" + line_2_loop.join + "\n" + line_3_loop.join
             end
-
-
-
 
 end
