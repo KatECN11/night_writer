@@ -28,21 +28,31 @@ class BrailleTranslator
                         "y" => ["..", "0.", ".."],
                         "z" => [".0", "0.", ".."]
                         }
-                      end
+  end
 
-            def converter(message)
-              text = message.chars
-              text_length = text.length
-              line_1_loop = text.map do |letter|
-                "#{@alpha_to_braille[letter][0]}"
-              end
-              line_2_loop = text.map do |letter|
-                "#{@alpha_to_braille[letter][1]}"
-              end
-              line_3_loop = text.map do |letter|
-                "#{@alpha_to_braille[letter][2]}"
-              end
-            line_1_loop.join + "\n" + line_2_loop.join + "\n" + line_3_loop.join
-            end
+  def converter(message)
+    text = message.chars
+    line_1_loop = text.map do |letter|
+      "#{@alpha_to_braille[letter][0]}"
+    end
+    line_2_loop = text.map do |letter|
+      "#{@alpha_to_braille[letter][1]}"
+    end
+    line_3_loop = text.map do |letter|
+      "#{@alpha_to_braille[letter][2]}"
+    end
+
+    "\n" + line_1_loop.join + "\n" + line_2_loop.join + "\n" + line_3_loop.join + "\n" + "\n"
+    # binding.pry
+  end
+
+  def break_to_40(message)
+    message_40 = message.scan(/.{1,40}/)
+    message_40.each do |message|
+      converter(message)
+    end
+
+  end
+
 
 end
