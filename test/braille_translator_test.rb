@@ -6,11 +6,13 @@ require "pry"
 class BrailleTranslatorTest < Minitest::Test
 
   def test_it_exists
+    skip
     bm = BrailleTranslator.new
     assert_instance_of BrailleTranslator, bm
   end
 
   def test_converts_single_character
+    skip
     bm = BrailleTranslator.new
 
     actual = bm.converter("a")
@@ -30,6 +32,7 @@ class BrailleTranslatorTest < Minitest::Test
   end
 
   def test_converts_multiple_characters_on_same_line
+    skip
     bm = BrailleTranslator.new
 
     actual = bm.converter("abc")
@@ -38,6 +41,14 @@ class BrailleTranslatorTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_breaks_long_string_into_groups_40
+    bm = BrailleTranslator.new
+    message = "aaaaaaaaaabbbbbbbbbaaaaaaaaaabbbbbbbbbbbccccccccccddddddddddccccccccccddddddddddee"
+    
+    actual = bm.break_to_40(message)
+    expected = ["aaaaaaaaaabbbbbbbbbaaaaaaaaaabbbbbbbbbbb", "ccccccccccddddddddddccccccccccdddddddddd", "ee"]
 
+    assert_equal expected, actual
+  end
 
 end
