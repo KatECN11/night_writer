@@ -1,9 +1,8 @@
 handle = File.open(ARGV[0], 'r')
 
-message = handle.read
+message = handle.read.chomp
 
 puts "Created #{ARGV[1]} containing #{message.length} characters."
-
 handle.close
 
 class BrailleTranslater
@@ -36,13 +35,21 @@ class BrailleTranslater
                         "y" => ["..", "0.", ".."],
                         "z" => [".0", "0.", ".."]
                         }
+                      end
+
+            def converter(text)
+              "#{@alpha_to_braille[text][0]}#{@alpha_to_braille[text][1]}#{@alpha_to_braille[text][2]}"
+            end
 end
 
 # Braille conversion algorithm
-# braille_message = this is the braille
+
+bm = BrailleTranslater.new
+braille_message = bm.converter(message)
+p braille_message
 
 writer = File.open(ARGV[1], 'w')
 
-writer.write("braille_message")
+writer.write(braille_message)
 
 writer.close
