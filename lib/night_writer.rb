@@ -2,7 +2,7 @@ handle = File.open(ARGV[0], 'r')
 
 message = handle.read
 
-puts "Created #{ARGV[1]} containing 256 characters."
+puts "Created #{ARGV[1]} containing #{message.length} characters."
 
 handle.close
 
