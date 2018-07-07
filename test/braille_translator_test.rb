@@ -18,4 +18,14 @@ class BrailleTranslatorTest < Minitest::Test
 
     assert_equal expected, actual
   end
+
+  def test_converts_multiple_characters
+    bm = BrailleTranslator.new
+
+    actual = bm.converter("ab")
+    expected = ".0\n00\n00" ".0\n.0\n00"
+
+    assert_equal expected, actual
+  end
+
 end
