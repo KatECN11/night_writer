@@ -1,4 +1,4 @@
-class BrailleTranslater
+class BrailleTranslator
 
   def initialize
     @alpha_to_braille = {"a" => [".0", "00", "00"],
@@ -31,6 +31,6 @@ class BrailleTranslater
                       end
 
             def converter(text)
-              "#{@alpha_to_braille[text][0]}#{@alpha_to_braille[text][1]}#{@alpha_to_braille[text][2]}"
+              "#{@alpha_to_braille[text][0]}\n#{@alpha_to_braille[text][1]}\n#{@alpha_to_braille[text][2]}"
             end
 end
