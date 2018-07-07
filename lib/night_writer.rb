@@ -42,7 +42,6 @@ class BrailleTranslater
             end
 end
 
-# Braille conversion algorithm
 
 bm = BrailleTranslater.new
 braille_message = bm.converter(message)
