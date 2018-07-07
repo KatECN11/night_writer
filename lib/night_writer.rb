@@ -4,7 +4,6 @@ handle = File.open(ARGV[0], 'r')
 
 message = handle.read.chomp
 
-puts "Created #{ARGV[1]} containing #{message.length} characters."
 handle.close
 
 
@@ -18,3 +17,4 @@ writer = File.open(ARGV[1], 'w')
 writer.write(braille_message)
 
 writer.close
+puts "Created #{ARGV[1]} containing #{braille_message.length} characters."
