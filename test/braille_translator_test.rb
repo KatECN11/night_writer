@@ -20,7 +20,6 @@ class BrailleTranslatorTest < Minitest::Test
   end
 
   def test_converts_multiple_characters
-    skip
     bm = BrailleTranslator.new
 
     actual = bm.converter("ab")
@@ -38,6 +37,14 @@ class BrailleTranslatorTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_breaks_long_string_into_groups_40
+    bm = BrailleTranslator.new
+    message = "aaaaaaaaaabbbbbbbbbaaaaaaaaaabbbbbbbbbccccccccccddddddddddccccccccccdddddddddd"
 
+    actual = bm.break_to_40(message)
+    expected = ["aaaaaaaaaabbbbbbbbbaaaaaaaaaabbbbbbbbb", "ccccccccccddddddddddccccccccccdddddddddd"]
+
+    assert_equal expected, actual
+  end
 
 end
