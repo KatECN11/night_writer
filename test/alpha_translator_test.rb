@@ -22,4 +22,15 @@ class AlphaTranslatorTest < Minitest::Test
 
     assert_equal expected, actual
   end
+
+  def test_it_converts_multiple_braille_characters_to_alpha
+    bt = BrailleTranslator.new
+    at = AlphaTranslator.new(bt)
+
+    actual = at.converter(".00000.00000")
+    expected = "aa"
+
+    assert_equal expected, actual 
+  end
+
 end
