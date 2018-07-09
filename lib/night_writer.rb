@@ -21,6 +21,4 @@ braille_message.each do |element|
 end
 
 
-
-
 puts "Created #{ARGV[1]} containing #{characters} characters."
