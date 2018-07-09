@@ -9,7 +9,12 @@ class AlphaTranslator
 
   end
 
-  # def prepare_braille(braille)
-
+  def prepare_braille(braille)
+    sectioned_message = braille.scan(/.{6}/)
+    converted_array = sectioned_message.map do |message|
+      converter(message)
+    end
+    converted_array.join
+  end
 
 end
