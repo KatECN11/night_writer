@@ -27,7 +27,7 @@ class AlphaTranslatorTest < Minitest::Test
     bt = BrailleTranslator.new
     at = AlphaTranslator.new(bt)
 
-    actual = at.converter(".00000.00000")
+    actual = at.prepare_braille(".00000.00000")
     expected = "aa"
 
     assert_equal expected, actual 
