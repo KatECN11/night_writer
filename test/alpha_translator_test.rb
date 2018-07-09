@@ -4,12 +4,13 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
 
-class AlphaTranslator < Minitest::Test
+class AlphaTranslatorTest < Minitest::Test
 
   def test_it_exists
-    at = AlphaTranslator.new
+    bt = BrailleTranslator.new
+    at = AlphaTranslator.new(bt)
 
     assert_instance_of AlphaTranslator, at
-  end 
+  end
 
 end
