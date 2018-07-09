@@ -9,7 +9,7 @@ handle.close
 
 
 bm = BrailleTranslator.new
-braille_message = bm.break_to_40(message)
+braille_message = bm.converter(message)
 
 writer = File.open(ARGV[1], 'w') do |f|
   f.puts braille_message
