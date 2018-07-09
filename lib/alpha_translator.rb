@@ -1,4 +1,5 @@
 class AlphaTranslator
+
   def initialize
     @braille_to_alpha = {[".0", "00", "00"] => "a",
                       [".0", ".0", "00"] => "b",
@@ -27,12 +28,10 @@ class AlphaTranslator
                       ["..", "0.", ".."] => "y",
                       [".0", "0.", ".."] => "z"
                       }
-  end ab = {[".00000"] => "a"}
-      ab = {[".0", "00", "00"] => "a"}
-      ab[".0", "00", "00"]
-      ab[".00000"]
+  end
 
   def converter(message)
+    
   end
 
 
