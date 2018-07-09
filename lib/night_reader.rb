@@ -1,4 +1,5 @@
-require './lib/alpha_translator.rb'
+require './lib/alpha_translator'
+require './lib/braille_translator'
 
 handle = File.open(ARGV[0], 'r')
 
@@ -6,8 +7,8 @@ message = handle.read.chomp
 
 handle.close
 
-am = AlphaTranslator.new
-alpha_message = am.break_to_40(message)
+at = AlphaTranslator.new
+alpha_message = at.converter(message)
 
 writer = File.open(ARGV[1], 'w') do |f|
   f.puts alpha_message
