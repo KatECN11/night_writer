@@ -32,6 +32,10 @@ class AlphaTranslator
   end
 
   def braille_to_alpha_converter(braille_message)
+    braille_characters = organize_arrays(braille_message)
+    double_elements = groups_of_two(braille_characters)
+    broken_characters = rearrange(double_elements)
+    convert_to_alpha(broken_characters)
   end
   # this is our CEO method
 
