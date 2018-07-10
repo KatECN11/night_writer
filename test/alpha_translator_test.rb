@@ -8,26 +8,7 @@ class AlphaTranslatorTest < Minitest::Test
 
   def test_it_exists
     at = AlphaTranslator.new
-
     assert_instance_of AlphaTranslator, at
-  end
-
-  def test_it_converts_one_braille_character_to_alpha
-    at = AlphaTranslator.new
-
-    actual = at.converter(".00000")
-    expected = "a"
-
-    assert_equal expected, actual
-  end
-
-  def test_it_converts_multiple_braille_characters_to_alpha
-    at = AlphaTranslator.new
-
-    actual = at.prepare_braille(".00000.00000")
-    expected = "aa"
-
-    assert_equal expected, actual
   end
 
   def test_makes_3_arrays_of_braille
@@ -37,6 +18,15 @@ class AlphaTranslatorTest < Minitest::Test
     expected =[[".0.0"], ["00.0"], ["0000"]]
 
     assert_equal expected, actual
+  end
+
+  def test_group_into_two_characters
+    at = AlphaTranslator.new
+
+    actual = at.groups_of_two(braille_characters)
+    expected = [[".0", ".0", ".0"], ["00", "00", "00"], ["00", "00", "00"]]
+
+    assert_equal expected, actual 
   end
 
 
