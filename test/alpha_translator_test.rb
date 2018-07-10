@@ -23,12 +23,20 @@ class AlphaTranslatorTest < Minitest::Test
   def test_group_into_two_characters
     at = AlphaTranslator.new
 
-    actual = at.groups_of_two([[".0.0"], ["0000"], ["0000"]])
-    expected = [[".0", ".0"], ["00", "00"], ["00", "00"]]
+    actual = at.groups_of_two([[".0.0"], ["00.0"], ["0000"]])
+    expected = [[".0", ".0"], ["00", ".0"], ["00", "00"]]
 
     assert_equal expected, actual
   end
 
+  def test_rearrange_by_character
+    at = AlphaTranslator.new
+
+    actual = at.rearrange([[".0", ".0"], ["00", ".0"], ["00", "00"]])
+    expected = [[".0", "00", "00"], [".0", ".0", "00"]]
+
+    assert_equal expected, actual
+  end
 
 
 
