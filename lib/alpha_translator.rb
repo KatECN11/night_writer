@@ -52,6 +52,11 @@ class AlphaTranslator
     braille_characters = [first_braille_character, second_braille_character, third_braille_character]
   end
 
-
+  def groups_of_two(braille_characters)
+    double_elements = braille_characters.flatten.map do |braille_character|
+      braille_character.scan(/.{2}/)
+    end
+    double_elements
+  end
 
 end
