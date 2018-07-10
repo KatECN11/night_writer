@@ -27,8 +27,9 @@ class BrailleTranslator
                          "w" => ["0.", "..", "0."],
                          "x" => ["..", "00", ".."],
                          "y" => ["..", "0.", ".."],
-                         "z" => [".0", "0.", ".."]
-                        }
+                         "z" => [".0", "0.", ".."],
+                         " " => ["..", "..", ".."]
+                       }
   end
 
   def converter(message)
@@ -50,7 +51,7 @@ class BrailleTranslator
       "#{@alpha_to_braille[letter][2]}"
     end
 
-    line_1_loop.join + "\n" + line_2_loop.join + "\n" + line_3_loop.join
+    line_1_loop.join + "\n" + line_2_loop.join + "\n" + line_3_loop.join + "\n"
   end
 
 end
