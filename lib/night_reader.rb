@@ -3,18 +3,24 @@ require './lib/braille_translator'
 
 handle = File.open(ARGV[0], 'r')
 
-message = handle.read.chomp
+# message = handle.read.chomp
+
+lines = handle.readlines
 
 handle.close
 
-bt = BrailleTranslator.new
-at = AlphaTranslator.new(bt)
-alpha_message = at.converter(message)
-require "pry"; binding.pry
 
-writer = File.open(ARGV[1], 'w') do |f|
-  f.puts alpha_message
-end
+at = AlphaTranslator.new
+alpha_message = at.converter(message)
+
+
+# at = AlphaTranslator.new
+# alpha_message = at.prepare_braille(lines)
+#
+writer = File.open(ARGV[1], 'w')
+alpha_message = "lkjsdflkjsafdlkjsdflkjdf"
+
+writer.write(alpha_message)
 
 characters = alpha_message.length
 
