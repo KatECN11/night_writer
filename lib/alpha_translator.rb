@@ -31,9 +31,8 @@ class AlphaTranslator
                        }
   end
 
-  # def converter(message)
-  #   @key[message.scan(/.{2}/)]
-  # end
+  def braille_to_alpha_converter(braille_message)
+  end
   # this is our CEO method
 
   def organize_arrays(braille_message)
@@ -64,6 +63,12 @@ class AlphaTranslator
     second_characters = double_elements[1]
     third_characters = double_elements[2]
     first_characters.zip(second_characters,third_characters)
+  end
+
+  def convert_to_alpha(braille_characters)
+    braille_characters.map do |character|
+      @braille_to_alpha[character]
+    end.join
   end
 
 end
