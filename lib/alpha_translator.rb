@@ -59,4 +59,11 @@ class AlphaTranslator
     double_elements
   end
 
+  def rearrange(double_elements)
+    first_characters = double_elements[0]
+    second_characters = double_elements[1]
+    third_characters = double_elements[2]
+    first_characters.zip(second_characters,third_characters)
+  end
+
 end
