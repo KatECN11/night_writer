@@ -38,6 +38,24 @@ class AlphaTranslatorTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_does_it_convert_to_alpha
+    at = AlphaTranslator.new
+
+    actual = at.convert_to_alpha([[".0", "00", "00"], [".0", ".0", "00"]])
+    expected = "ab"
+
+    assert_equal expected, actual
+  end
+
+  def test_braille_to_alpha_converter_ceo
+    at = AlphaTranslator.new
+
+    actual = at.braille_to_alpha_converter([".0.0\n", "00.0\n", "0000\n"])
+    expected = "ab"
+
+    assert_equal expected, actual
+  end
+
 
 
 end
