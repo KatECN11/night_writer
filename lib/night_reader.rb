@@ -7,16 +7,15 @@ message = handle.read.chomp
 
 handle.close
 
-at = AlphaTranslator.new
+bt = BrailleTranslator.new
+at = AlphaTranslator.new(bt)
 alpha_message = at.converter(message)
+require "pry"; binding.pry
 
 writer = File.open(ARGV[1], 'w') do |f|
   f.puts alpha_message
 end
 
-characters = 0
-alpha_message.each do |element|
-  characters += element.length
-end
+characters = alpha_message.length
 
 puts "Created #{ARGV[1]} containing #{characters} characters."
