@@ -10,6 +10,10 @@ lines = handle.readlines
 handle.close
 
 
+at = AlphaTranslator.new
+alpha_message = at.converter(message)
+
+
 # at = AlphaTranslator.new
 # alpha_message = at.prepare_braille(lines)
 #
