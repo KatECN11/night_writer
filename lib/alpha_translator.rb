@@ -31,16 +31,27 @@ class AlphaTranslator
                        }
   end
 
-  def converter(message)
-    @key[message.scan(/.{2}/)]
+  # def converter(message)
+  #   @key[message.scan(/.{2}/)]
+  # end
+  # this is our CEO method
+
+  def organize_arrays(braille_message)
+    first_braille_character = []
+    second_braille_character = []
+    third_braille_character = []
+    braille_message.each_with_index do |braille, index|
+    if index % 3 == 0
+        first_braille_character << braille.chomp
+      elsif (index - 1) % 3 == 0
+        second_braille_character << braille.chomp
+      else
+        third_braille_character << braille.chomp
+      end
+    end
+    braille_characters = [first_braille_character, second_braille_character, third_braille_character]
   end
 
-  def prepare_braille(braille)
-    sectioned_message = braille.scan(/.{6}/)
-    converted_array = sectioned_message.map do |message|
-      converter(message)
-    end
-    converted_array.join
-  end
+
 
 end
