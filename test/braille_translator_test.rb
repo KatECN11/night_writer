@@ -6,51 +6,50 @@ require "pry"
 class BrailleTranslatorTest < Minitest::Test
 
   def test_it_exists
-    skip
     bm = BrailleTranslator.new
     assert_instance_of BrailleTranslator, bm
   end
 
   def test_converts_single_character
-    skip
     bm = BrailleTranslator.new
 
     actual = bm.converter("a")
-    expected = ".0\n00\n00"
+    expected = [".0\n00\n00\n"]
 
     assert_equal expected, actual
   end
 
   def test_converts_multiple_characters
-    skip
     bm = BrailleTranslator.new
 
     actual = bm.converter("ab")
-    expected = ".0\n00\n00\n.0\n.0\n00"
+    expected = [".0.0\n00.0\n0000\n"]
 
     assert_equal expected, actual
   end
 
   def test_converts_multiple_characters_on_same_line
-    skip
     bm = BrailleTranslator.new
 
     actual = bm.converter("abc")
-    expected = ".0.0..\n00.000\n000000"
+    expected = [".0.0..\n00.000\n000000\n"]
 
     assert_equal expected, actual
   end
 
-  def test_breaks_long_string_into_groups_40
+
+  def test_it_outputs_array_of_80_braille_characters_per_element
     bm = BrailleTranslator.new
-    message = "aaaaaaaaaabbbbbbbbbaaaaaaaaaabbbbbbbbbbbccccccccccddddddddddccccccccccddddddddddee"
+    message = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    actual = bm.converter(message)
+    expected =
+    [".0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0\n" +
+    "00000000000000000000000000000000000000000000000000000000000000000000000000000000\n" +
+    "00000000000000000000000000000000000000000000000000000000000000000000000000000000\n",
+    ".0\n00\n00\n"]
 
-    actual = bm.break_to_40(message)
-    expected = ["aaaaaaaaaabbbbbbbbbaaaaaaaaaabbbbbbbbbbb", "ccccccccccddddddddddccccccccccdddddddddd", "ee"]
 
-    assert_equal expected, actual
+  assert_equal expected, actual
   end
-
-  
 
 end
