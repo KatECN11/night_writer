@@ -31,16 +31,50 @@ class AlphaTranslator
                        }
   end
 
-  def converter(message)
-    @key[message.scan(/.{2}/)]
+  def braille_to_alpha_converter(braille_message)
+    braille_characters = organize_arrays(braille_message)
+    double_elements = groups_of_two(braille_characters)
+    broken_characters = rearrange(double_elements)
+    convert_to_alpha(broken_characters)
+  end
+  # this is our CEO method
+
+  def organize_arrays(braille_message)
+    first_braille_character = []
+    second_braille_character = []
+    third_braille_character = []
+    braille_message.each_with_index do |braille, index|
+    if index % 3 == 0
+        first_braille_character << braille.chomp
+
+      elsif (index - 1) % 3 == 0
+        second_braille_character << braille.chomp
+
+      else
+        third_braille_character << braille.chomp
+      end
+    end
+    braille_characters = [first_braille_character.join, second_braille_character.join, third_braille_character.join]
   end
 
-  def prepare_braille(braille)
-    sectioned_message = braille.scan(/.{6}/)
-    converted_array = sectioned_message.map do |message|
-      converter(message)
+  def groups_of_two(braille_characters)
+    double_elements = braille_characters.map do |braille_character|
+      braille_character.scan(/.{2}/)
     end
-    converted_array.join
+    double_elements
+  end
+
+  def rearrange(double_elements)
+    first_characters = double_elements[0]
+    second_characters = double_elements[1]
+    third_characters = double_elements[2]
+    first_characters.zip(second_characters,third_characters)
+  end
+
+  def convert_to_alpha(braille_characters)
+    braille_characters.map do |character|
+      @braille_to_alpha[character]
+    end.join
   end
 
 end
