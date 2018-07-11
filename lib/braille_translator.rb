@@ -1,7 +1,10 @@
+require './lib/file_io'
+
 class BrailleTranslator
   attr_reader :alpha_to_braille
 
   def initialize
+    @file = FileIO.new
     @alpha_to_braille = {"a" => [".0", "00", "00"],
                          "b" => [".0", ".0", "00"],
                          "c" => ["..", "00", "00"],
@@ -32,11 +35,13 @@ class BrailleTranslator
                        }
   end
 
-  def converter(message)
-    message_40 = message.scan(/.{1,40}/)
+  def converter
+    message = @file.read
+    message_40 = message.chomp.scan(/.{1,40}/)
     braille_message = message_40.map do |message|
-      seperate_text(message)
+        seperate_text(message)
     end
+    @file.write(braille_message)
   end
 
   def seperate_text(message)

@@ -1,10 +1,18 @@
+require './lib/braille_translator'
 class FileIO
   def read
-    handle = File.open(ARGV[0], 'r')
-    File.read(handle)
+    handle = File.read(ARGV[0])
+    
   end
 
-  def write
-    writer = ARGV[1]
-    File.open(writer)
+  def write(output)
+    writer = File.open(ARGV[1], 'w') do |f|
+      f.puts output
+    end
+    characters = 0
+    output.each do |element|
+      characters += element.length
+    end
+    puts "Created #{ARGV[1]} containing #{characters} characters."
+end
 end
