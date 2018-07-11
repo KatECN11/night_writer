@@ -15,7 +15,7 @@ class AlphaTranslatorTest < Minitest::Test
     at = AlphaTranslator.new
 
     actual = at.organize_arrays([".0.0\n", "00.0\n", "0000\n"])
-    expected =[[".0.0"], ["00.0"], ["0000"]]
+    expected =[".0.0", "00.0", "0000"]
 
     assert_equal expected, actual
   end
@@ -23,7 +23,7 @@ class AlphaTranslatorTest < Minitest::Test
   def test_group_into_two_characters
     at = AlphaTranslator.new
 
-    actual = at.groups_of_two([[".0.0"], ["00.0"], ["0000"]])
+    actual = at.groups_of_two([".0.0", "00.0", "0000"])
     expected = [[".0", ".0"], ["00", ".0"], ["00", "00"]]
 
     assert_equal expected, actual
@@ -48,14 +48,18 @@ class AlphaTranslatorTest < Minitest::Test
   end
 
   def test_braille_to_alpha_converter_ceo
+
     at = AlphaTranslator.new
 
-    actual = at.braille_to_alpha_converter([".0.0\n", "00.0\n", "0000\n"])
-    expected = "ab"
+    actual = at.braille_to_alpha_converter(
+    [".0.0.0.0.0...0.00....0.0.0.....0.0...0.00...0....0......0....0...0.0.0.0..0..00.\n",
+    "..0..0.00.....0.....00..0...0.0.00..0000.....0..0000...0.00.0...0..00...0......0\n",
+    "0000.0.0.0..00.00...00.000.....0.....000.0..00..00.0..0000.000..00..00.0...00000\n",
+    "......0.0...0.0..0.0.0...0.0.0.0..0.....0....0.0.0....\n",
+    "0......0.0...0..0..0.0....0...0....00....0000..0000.0.\n",
+    ".000..00.0...00.00.0.0..0000.000..00.0..000000.000.000\n"])
+    expected = "hello how are you kat i am fine everything is swell here in iceland"
 
     assert_equal expected, actual
   end
-
-
-
 end

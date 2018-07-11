@@ -46,17 +46,19 @@ class AlphaTranslator
     braille_message.each_with_index do |braille, index|
     if index % 3 == 0
         first_braille_character << braille.chomp
+
       elsif (index - 1) % 3 == 0
         second_braille_character << braille.chomp
+
       else
         third_braille_character << braille.chomp
       end
     end
-    braille_characters = [first_braille_character, second_braille_character, third_braille_character]
+    braille_characters = [first_braille_character.join, second_braille_character.join, third_braille_character.join]
   end
 
   def groups_of_two(braille_characters)
-    double_elements = braille_characters.flatten.map do |braille_character|
+    double_elements = braille_characters.map do |braille_character|
       braille_character.scan(/.{2}/)
     end
     double_elements

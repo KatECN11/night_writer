@@ -1,5 +1,6 @@
 require './lib/alpha_translator'
 require './lib/braille_translator'
+require 'pry'
 
 handle = File.open(ARGV[0], 'r')
 
@@ -11,14 +12,15 @@ handle.close
 
 
 at = AlphaTranslator.new
-alpha_message = at.converter(message)
+alpha_message = at.braille_to_alpha_converter(lines)
+
 
 
 # at = AlphaTranslator.new
 # alpha_message = at.prepare_braille(lines)
 #
 writer = File.open(ARGV[1], 'w')
-alpha_message = "lkjsdflkjsafdlkjsdflkjdf"
+
 
 writer.write(alpha_message)
 
